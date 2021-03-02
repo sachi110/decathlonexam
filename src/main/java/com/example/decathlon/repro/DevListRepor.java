@@ -18,7 +18,7 @@ import java.util.Optional;
 public interface DevListRepor extends JpaRepository<Developer,Long> {
 
 
-    @Query(value="SELECT  * FROM DEVELOPER t where t.team_id = :team_id" , nativeQuery = true)
+    @Query(value="SELECT  * FROM DEVELOPER t where t.team_id = team_id" , nativeQuery = true)
     List<Developer>  findByteam_id(@Param("team_id") Long team_id);
 
 
