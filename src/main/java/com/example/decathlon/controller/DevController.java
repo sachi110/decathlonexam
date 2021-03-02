@@ -16,10 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
 public class DevController {
@@ -37,7 +34,13 @@ public class DevController {
 
     @RequestMapping("/getall")
     public List<Developers> getdevloperData() {
-        return devSevice.findall();
+        List<Developers> ls = devSevice.findall();
+
+        for (Developers ds : ls) {
+            ls.get(0).setDevelopers((devListRepor.findByteam_id(ds.getId())));
+        }
+
+        return ls;
     }
 
 
@@ -79,9 +82,9 @@ public class DevController {
     }
 
     @RequestMapping("/{team_id}")
-    public String getAlert(@PathVariable long team_id) {
+    public String getAlert(@PathVariable String team_id) {
 
-        String scont = devSevice.findByIdforalert(team_id);
+        String scont = devSevice.findByIdforalert(Long.parseLong(team_id));
         logger.info(scont);
         Map<String, String> params = new HashMap<String, String>();
         params.put("phone_number", scont);
