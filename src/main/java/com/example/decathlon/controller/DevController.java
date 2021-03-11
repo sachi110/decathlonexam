@@ -32,6 +32,8 @@ public class DevController {
     @Value("${url}")
     private String smsurl;
 // done is
+
+    //created in new branch
     @RequestMapping("/getall")
     public List<Developers> getdevloperData() {
         List<Developers> ls = devSevice.findall();
