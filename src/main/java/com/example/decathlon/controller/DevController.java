@@ -31,7 +31,7 @@ public class DevController {
 
     @Value("${url}")
     private String smsurl;
-
+// done is
     @RequestMapping("/getall")
     public List<Developers> getdevloperData() {
         List<Developers> ls = devSevice.findall();
