@@ -48,6 +48,7 @@ class DecathlonApplicationTests {
 
 
         ResponseEntity<String> result = restTemplate.getForEntity(uri, String.class);
+        restTemplate.getForObject(uri,String.class);
         System.out.println(result);
 
         Assert.assertEquals(200, result.getStatusCodeValue());
